@@ -44,6 +44,35 @@ const Home: NextPage = () => {
     );
   }
 
+  function footer() {
+    return (
+      <div className={styles.footerCard}>
+        <div className={styles.footerTop}>Questions? Call 0808 196 5391</div>
+        <div className={styles.footerContainer}>
+          <div>FAQ</div>
+          <div>Help Centre</div>
+          <div>Account</div>
+          <div>Media Centre</div>
+          <div>Investor Relations</div>
+          <div>Jobs</div>
+          <div>Redeem gift cards</div>
+          <div>Buy gift cards</div>
+          <div>Ways to Watch</div>
+          <div>Terms of Use</div>
+          <div>Privacy</div>
+          <div>Cookie Preferences</div>
+          <div>Corporate Information</div>
+          <div>Contact Us</div>
+          <div>Speed Test</div>
+          <div>Legal Guarantee</div>
+          <div>Legal Notices</div>
+          <div>Only on Netflix</div>
+        </div>
+        <div className={styles.footerCountry}>Netflix United Kingdom</div>
+      </div>
+    )
+  }
+
   return (
     <>
       <div className={styles.background}>
@@ -69,6 +98,7 @@ const Home: NextPage = () => {
       {renderDesc('/mobile-0819.jpeg', 'Download your programmes to watch offline.', 'Save your favourites easily and always have something to watch.', true)}
       {renderDesc('/device-pile.png', 'Watch everywhere.', 'Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.', false)}
       {renderDesc('/kids.png', 'Create profiles for children.', 'Send children on adventures with their favourite characters in a space made just for them – free with your membership.', true)}
+      {footer()}
     </>
   );
 };
