@@ -80,6 +80,53 @@
   width: 48%
 }
 
+.accordionCard > div {
+  margin: 0 auto;
+  margin-bottom: 52px;
+}
+
+.accordionContainer {
+  background-color: rgb(48, 48, 48);
+  width: 75%;
+}
+
+.accordionItem {
+  border-bottom: 8px solid #000;
+}
+
+.accordionTitle {
+  font-size: 26px;
+  padding: 0.8em 1.2em 0.8em 1.2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordionBtn {
+  display: flex;
+  transform: rotate(-45deg);
+}
+
+.accordionBtn.open {
+  transform: rotate(0deg);
+}
+
+.accordionText {
+  font-size: 26px;
+  border-top: 1px solid #000;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s cubic-bezier(.5,0,.1,1);
+}
+
+.accordionText.open {
+  max-height: 1200px;
+  transition: max-height .25s cubic-bezier(.5,0,.1,1);
+}
+
+.accordionText div {
+  padding: 1.2em;
+}
+
 .footerCard {
   max-width: 1000px;
   margin: 0 auto;
