@@ -122,7 +122,7 @@ const Home: NextPage = () => {
         <div className={styles.accordionContainer}>
           {items.map((item) => {
             return (
-              <div className={styles.accordionItem}>
+              <div className={styles.accordionItem} key={item.id}>
                 <div className={styles.accordionTitle} onClick={() => openAccordion(item.id)}>
                   <div>
                     {item.title}
