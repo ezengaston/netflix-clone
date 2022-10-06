@@ -1,5 +1,7 @@
 .form {
     text-align: center;
+    width: max-content;
+    margin: 0 auto;
 }
 
 .emailFormTitle {
@@ -12,28 +14,37 @@
     position: relative;
     width: 430px;
     height: 60px;
-    display: inline-block;
+}
+
+.emailContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .input {
     width: 100%;
     height: 100%;
-    border: none;
+    border: solid 1px rgb(140, 140, 140)
+    ;
     outline: 0;
     font-size: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
 }
 
 .label {
     font-size: 16px;
     position: absolute;
     color: black;
+    padding-left: 10px;
     transform-origin: top left;
-    transform: translate(0, 16px) scale(1);
+    transform: translate(0, 21px) scale(1);
     transition: all .1s ease-in-out;
 }
 
 .active .label {
-    transform: translate(0, 4px) scale(.75);
+    transform: translate(1px, 4px) scale(.75);
 }
 
 .button {
@@ -42,4 +53,30 @@
     color: white;
     height: 60px;
     font-size: 26px;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #f40612;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 45%);
+}
+
+.button span {
+    margin-right: 12px;
+}
+
+.error {
+    text-align: start;
+    margin-top: 6px;
+    color: #ffa00a;
+    display: none;
+}
+
+.error.active {
+    display: block;
+}
+
+.errorBorder {
+    border-bottom-color: #ffa00a;
 }
