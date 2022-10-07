@@ -23,7 +23,7 @@ const Home: NextPage = () => {
             <div className={styles.imageContainer}>
               <Image src={imageUrl} width={640} height={480} />
             </div>
-            <div className={styles.textContainer}>
+            <div className={`${styles.textContainer} ${styles.paddingLeft}`}>
               <div className={styles.mainTitle}>{title}</div>
               <div className={styles.mainSubtitle}>{text}</div>
             </div>
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
     return (
       <div className={styles.card}>
         <div className={styles.descContainer}>
-          <div className={styles.textContainer}>
+          <div className={`${styles.textContainer} ${styles.paddingRight}`}>
             <div className={styles.mainTitle}>{title}</div>
             <div className={styles.mainSubtitle}>{text}</div>
           </div>
