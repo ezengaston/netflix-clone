@@ -59,7 +59,7 @@ const Home: NextPage = () => {
       }
     ]
 
-    return items.map((item) => {
+    return items.map((item, index) => {
       const customVideos =
         <div className={styles[item.extraMedia.class]}>
           <video autoPlay={true} loop muted controls>
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
 
       const customDownloadingAnimation =
         <div className={styles[item.extraMedia.class]}>
-          <Image src={item.extraMedia.extraUrl} width={51} height={72} />
+          <Image src={item.extraMedia.extraUrl} width={51} height={72} alt={item.extraMedia.text} />
           <div className={styles.extraMediaText}>
             <div className={styles.text1}>{item.extraMedia.text}</div>
             <div className={styles.text2}>Downloading...</div>
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
             <div className={styles.mainSubtitle}>{item.text}</div>
           </div>
           <div className={styles.imageContainer}>
-            <Image src={item.imageUrl} width={640} height={480} />
+            <Image src={item.imageUrl} width={640} height={480} alt={item.title} />
             {item.extraMedia.isExtraNeeded && customVideos}
           </div>
         </>
@@ -93,7 +93,7 @@ const Home: NextPage = () => {
         media =
           <>
             <div className={styles.imageContainer}>
-              <Image src={item.imageUrl} width={640} height={480} />
+              <Image src={item.imageUrl} width={640} height={480} alt={item.title} />
               {item.extraMedia.isExtraNeeded && customDownloadingAnimation}
             </div>
             <div className={`${styles.textContainer} ${styles.paddingLeft}`}>
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
       }
 
       return (
-        <div className={styles.card}>
+        <div className={styles.card} key={index}>
           <div className={styles.descContainer}>
             {media}
           </div>
@@ -131,7 +131,7 @@ const Home: NextPage = () => {
             Netflix is a streaming service that offers a wide variety of award-winning TV programmes, films, anime, documentaries and more – on thousands of internet-connected devices.
             <br />
             <br />
-            You can watch as much as you want, whenever you want, without a single advert – all for one low monthly price. There's always something new to discover, and new TV programmes and films are added every week!
+            You can watch as much as you want, whenever you want, without a single advert – all for one low monthly price. There&apos;s always something new to discover, and new TV programmes and films are added every week!
           </>
       },
       {
@@ -150,7 +150,7 @@ const Home: NextPage = () => {
             Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
             <br />
             <br />
-            You can also download your favourite programmes with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.
+            You can also download your favourite programmes with the iOS, Android, or Windows 10 app. Use downloads to watch while you&apos;re on the go and without an internet connection. Take Netflix with you anywhere.
           </>
       },
       {
@@ -174,10 +174,10 @@ const Home: NextPage = () => {
         title: 'Is Netflix good for children?',
         text:
           <>
-            The Netflix Children's experience is included in your membership to give parents control while children enjoy family-friendly TV programmes and films in their own space.
+            The Netflix Children&apos;s experience is included in your membership to give parents control while children enjoy family-friendly TV programmes and films in their own space.
             <br />
             <br />
-            Children's profiles come with PIN-protected parental controls that let you restrict the maturity rating of content children can watch and block specific titles you don’t want children to see.
+            Children&apos;s profiles come with PIN-protected parental controls that let you restrict the maturity rating of content children can watch and block specific titles you don’t want children to see.
           </>
       }
     ]
@@ -194,7 +194,7 @@ const Home: NextPage = () => {
                     {item.title}
                   </div>
                   <div className={`${styles.accordionBtn} ${item.id === openId ? styles.open : null}`}>
-                    <Image src='/cross.svg' width='26' height='26' />
+                    <Image src='/cross.svg' width='26' height='26' alt='button' />
                   </div>
                 </div>
                 <div className={`${styles.accordionText} ${item.id === openId ? styles.open : null}`}>

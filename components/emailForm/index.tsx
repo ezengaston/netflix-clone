@@ -46,7 +46,7 @@ const EmailForm = (): JSX.Element => {
                 </div>
                 <button className={styles.button} type="submit">
                     <span>Get Started</span>
-                    <Image src='/email-arrow.svg' width={9.7} height={19.5} />
+                    <Image src='/email-arrow.svg' width={9.7} height={19.5} alt='button' />
                 </button>
             </div>
             <div className={`${styles.error} ${error && styles.active}`}>Email is required.</div>
