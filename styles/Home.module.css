@@ -47,6 +47,7 @@
   font-size: 50px;
   max-width: 600px;
   text-align: center;
+  font-weight: bold;
 }
 
 .mainSubtitle {
@@ -65,6 +66,10 @@
 
 .card:nth-child(3) img {
   margin-left: -70px !important;
+}
+
+.card .download-mobile img {
+  margin-left: 0px !important;
 }
 
 .descContainer {
@@ -95,9 +100,74 @@
 }
 
 .imageContainer {
-  width: 48%
+  width: 48%;
+  position: relative;
 }
 
+.imageContainer img {
+  z-index: 10;
+}
+
+.inside-tv {
+  position: absolute;
+  top: 82px;
+  right: 51px;
+  width: 383px;
+  z-index: 1;
+}
+
+.inside-device-pile {
+  position: absolute;
+  top: 43px;
+  right: 104px;
+  width: 322px;
+  z-index: 1;
+}
+
+.download-mobile {
+  position: absolute;
+  bottom: 43px;
+  left: 30px;
+  background-color: #000;
+  border: 2px solid hsla(0,0%,100%,.25);
+  border-radius: 0.75em;
+  box-shadow: 0 0 2em 0 #000;
+  min-width: 15em;
+  width: 60%;
+  padding: 0.5em 0.75em;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+}
+
+.extraMediaText {
+  margin-left: 16px;
+  flex-grow: 1;
+}
+
+.text1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.text2 {
+  font-size: 16px;
+  color: #0071eb;
+}
+
+.customLoadingAnimation {
+  background: url('../public/download-icon.gif') 50% no-repeat;
+  background-size: 100%;
+  content: "";
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 3em;
+  outline: 2px solid #000;
+  outline-offset: -2px;
+  width: 3em;
+}
+ 
 .accordionCard > div {
   margin: 0 auto;
   margin-bottom: 52px;

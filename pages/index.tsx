@@ -10,41 +10,107 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   const [openId, setOpenId] = useState<number | null>(null);
 
-  function renderDesc(
-    imageUrl: string,
-    title: string,
-    text: string,
-    imageLeft: boolean
-  ): JSX.Element {
-    if (imageLeft) {
+  function renderDesc(): JSX.Element[] {
+    const items = [
+      {
+        imageUrl: '/tv.png',
+        title: 'Enjoy on your TV.',
+        text: 'Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.',
+        imageLeft: false,
+        extraMedia: {
+          isExtraNeeded: true,
+          extraUrl: '/video-tv-0819.m4v',
+          class: 'inside-tv',
+        }
+      },
+      {
+        imageUrl: '/mobile-0819.jpeg',
+        title: 'Download your programmes to watch offline.',
+        text: 'Save your favourites easily and always have something to watch.',
+        imageLeft: true,
+        extraMedia: {
+          isExtraNeeded: true,
+          extraUrl: '/boxshot.jpeg',
+          class: 'download-mobile',
+          text: 'Stranger Things'
+        }
+      },
+      {
+        imageUrl: '/device-pile.png',
+        title: 'Watch everywhere.',
+        text: 'Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.',
+        imageLeft: false,
+        extraMedia: {
+          isExtraNeeded: true,
+          extraUrl: '/video-devices.m4v',
+          class: 'inside-device-pile',
+        }
+      },
+      {
+        imageUrl: '/kids.png',
+        title: 'Create profiles for children.',
+        text: 'Send children on adventures with their favourite characters in a space made just for them – free with your membership.',
+        imageLeft: false,
+        extraMedia: {
+          isExtraNeeded: false,
+          extraUrl: '',
+          class: '',
+        }
+      }
+    ]
+
+    return items.map((item) => {
+      const customVideos =
+        <div className={styles[item.extraMedia.class]}>
+          <video autoPlay={true} loop muted controls>
+            <source src={item.extraMedia.extraUrl} type="video/mp4" />
+          </video>
+        </div>
+
+      const customDownloadingAnimation =
+        <div className={styles[item.extraMedia.class]}>
+          <Image src={item.extraMedia.extraUrl} width={51} height={72} />
+          <div className={styles.extraMediaText}>
+            <div className={styles.text1}>{item.extraMedia.text}</div>
+            <div className={styles.text2}>Downloading...</div>
+          </div>
+          <div className={styles.customLoadingAnimation}></div>
+        </div>
+
+      let media =
+        <>
+          <div className={`${styles.textContainer} ${styles.paddingRight}`}>
+            <div className={styles.mainTitle}>{item.title}</div>
+            <div className={styles.mainSubtitle}>{item.text}</div>
+          </div>
+          <div className={styles.imageContainer}>
+            <Image src={item.imageUrl} width={640} height={480} />
+            {item.extraMedia.isExtraNeeded && customVideos}
+          </div>
+        </>
+
+      if (item.imageLeft) {
+        media =
+          <>
+            <div className={styles.imageContainer}>
+              <Image src={item.imageUrl} width={640} height={480} />
+              {item.extraMedia.isExtraNeeded && customDownloadingAnimation}
+            </div>
+            <div className={`${styles.textContainer} ${styles.paddingLeft}`}>
+              <div className={styles.mainTitle}>{item.title}</div>
+              <div className={styles.mainSubtitle}>{item.text}</div>
+            </div>
+          </>
+      }
+
       return (
         <div className={styles.card}>
           <div className={styles.descContainer}>
-            <div className={styles.imageContainer}>
-              <Image src={imageUrl} width={640} height={480} />
-            </div>
-            <div className={`${styles.textContainer} ${styles.paddingLeft}`}>
-              <div className={styles.mainTitle}>{title}</div>
-              <div className={styles.mainSubtitle}>{text}</div>
-            </div>
+            {media}
           </div>
         </div>
       );
-    }
-
-    return (
-      <div className={styles.card}>
-        <div className={styles.descContainer}>
-          <div className={`${styles.textContainer} ${styles.paddingRight}`}>
-            <div className={styles.mainTitle}>{title}</div>
-            <div className={styles.mainSubtitle}>{text}</div>
-          </div>
-          <div className={styles.imageContainer}>
-            <Image src={imageUrl} width={640} height={480} />
-          </div>
-        </div>
-      </div>
-    );
+    })
   }
 
   function renderFAQ(): JSX.Element {
@@ -195,10 +261,7 @@ const Home: NextPage = () => {
           <EmailForm />
         </div>
       </div>
-      {renderDesc('/tv.png', 'Enjoy on your TV.', 'Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.', false)}
-      {renderDesc('/mobile-0819.jpeg', 'Download your programmes to watch offline.', 'Save your favourites easily and always have something to watch.', true)}
-      {renderDesc('/device-pile.png', 'Watch everywhere.', 'Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.', false)}
-      {renderDesc('/kids.png', 'Create profiles for children.', 'Send children on adventures with their favourite characters in a space made just for them – free with your membership.', true)}
+      {renderDesc()}
       {renderFAQ()}
       {footer()}
     </>
