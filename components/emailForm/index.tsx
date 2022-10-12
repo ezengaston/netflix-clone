@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 
+import FloatInput from '../floatInput'
+
 import styles from "./EmailForm.module.css";
 
 const EmailForm = (): JSX.Element => {
     const [value, setValue] = useState("");
-    const [activeClass, setActiveClass] = useState(false)
     const [error, setError] = useState(false)
 
     function handleSubmit(e: React.SyntheticEvent) {
@@ -27,23 +28,7 @@ const EmailForm = (): JSX.Element => {
                 Ready to watch? Enter your email to create or restart your membership.
             </div>
             <div className={styles.emailContainer}>
-                <div className={`${styles.floatContainer} ${activeClass && styles.active}`}>
-                    <label className={styles.label} htmlFor="email">Email address</label>
-                    <input
-                        className={`${styles.input} ${error && styles.errorBorder}`}
-                        id="email"
-                        type="email"
-                        onChange={(e) => {
-                            setValue(e.target.value)
-                        }}
-                        onFocus={() => setActiveClass(true)}
-                        onBlur={() => {
-                            if (value.length === 0) {
-                                setActiveClass(false)
-                            }
-                        }}
-                    ></input>
-                </div>
+                <FloatInput error={error} setValue={setValue} value={value} type="email" text="Email address" modifier="homepage" />
                 <button className={styles.button} type="submit">
                     <span>Get Started</span>
                     <Image src='/email-arrow.svg' width={9.7} height={19.5} alt='button' />
